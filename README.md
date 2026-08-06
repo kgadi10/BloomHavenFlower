@@ -1,9 +1,7 @@
 # Bloom Haven Flowers Website
 
 ## Student Information
-
-**Student Name:** [Insert Your Full Name]  
-**Student Number:** [Insert Student Number]  
+  
 **Subject:** Web Development  
 **Project:** Bloom Haven Flowers Website  
 
