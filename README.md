@@ -81,3 +81,77 @@ Development tools:
 # Project File Structure
 # BloomHavenFlower
 part 1
+
+---
+
+# Timeline and Milestones
+
+| Week | Task |
+|---|---|
+| Week 1 | Project proposal and organisation approval |
+| Week 2 | Research and content sourcing |
+| Week 3 | Sitemap and wireframe development |
+| Week 4 | HTML structure development |
+| Week 5 | CSS styling |
+| Week 6 | JavaScript implementation |
+| Week 7 | Testing and debugging |
+| Week 8 | Final submission |
+
+---
+
+# Part 1 Details
+
+## Project Initiation and Planning
+
+During Part 1, research was conducted on Bloom Haven Flowers to identify:
+
+- Website goals.
+- Target audience.
+- Required website content.
+- Resources needed for development.
+- Website structure and navigation.
+
+The initial HTML structure was created with five linked pages:
+
+- Home
+- About Us
+- Products
+- Enquiry
+- Contact
+
+---
+
+# Changelog
+
+## Version 1.0
+
+### Initial Development
+
+Changes made:
+
+- Created project folder structure.
+- Added HTML pages.
+- Added website navigation.
+- Added CSS styling.
+- Added JavaScript file.
+- Added website content.
+- Created README documentation.
+
+---
+
+# References
+
+Canva. (2026). Canva Design Platform. Available at:
+https://www.canva.com/
+
+Google Fonts. (2026). Google Fonts Library. Available at:
+https://fonts.google.com/
+
+Mozilla Developer Network. (2026). HTML, CSS and JavaScript Documentation. Available at:
+https://developer.mozilla.org/
+
+Pexels. (2026). Free Stock Images. Available at:
+https://www.pexels.com/
+
+Unsplash. (2026). Free Image Resources. Available at:
+https://unsplash.com/
