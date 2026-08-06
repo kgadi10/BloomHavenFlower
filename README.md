@@ -151,7 +151,9 @@ Mozilla Developer Network. (2026). HTML, CSS and JavaScript Documentation. Avail
 https://developer.mozilla.org/
 Implemented CSS styling and website layout design
 Added JavaScript functionality and website improvements
-
+Added Bloom Haven Flowers HTML pages and navigation system
+Added website content for home, about, products, enquiry and contact pages
+Added Bloom Haven Flowers HTML pages and navigation system
 
 Pexels. (2026). Free Stock Images. Available at:
 https://www.pexels.com/
