@@ -149,6 +149,7 @@ https://fonts.google.com/
 
 Mozilla Developer Network. (2026). HTML, CSS and JavaScript Documentation. Available at:
 https://developer.mozilla.org/
+Implemented CSS styling and website layout design
 
 Pexels. (2026). Free Stock Images. Available at:
 https://www.pexels.com/
