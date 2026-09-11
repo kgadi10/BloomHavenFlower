@@ -350,3 +350,4 @@ Added low fidelity wireframes for all website pages
 Added descriptive comments to HTML CSS and JavaScript files
 Implemented desktop layout using CSS Grid and Flexbox
 Added responsive tablet and mobile layouts
+Added responsive product images and visual styling
