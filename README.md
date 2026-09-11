@@ -345,3 +345,5 @@ After validation, the contact information is compiled into a
 - Added message type selection to the contact form.
 - Added JavaScript validation to the contact form.
 - Added a mailto email function for contact submissions.
+
+Added low fidelity wireframes for all website pages
