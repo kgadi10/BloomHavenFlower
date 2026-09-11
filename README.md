@@ -349,3 +349,4 @@ After validation, the contact information is compiled into a
 Added low fidelity wireframes for all website pages
 Added descriptive comments to HTML CSS and JavaScript files
 Implemented desktop layout using CSS Grid and Flexbox
+Added responsive tablet and mobile layouts
