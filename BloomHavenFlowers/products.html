@@ -1,115 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Products | Bloom Haven Flowers</title>
+    <!-- Page title -->
+    <title>Products | Bloom Haven Flowers</title>
 
-<link rel="stylesheet" href="css/style.css">
-
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 
 <body>
 
-<header>
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
 
-<h1>Our Flower Products</h1>
+        <div class="logo">
+            Bloom Haven Flowers
+        </div>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About Us</a>
-<a href="products.html">Products</a>
-<a href="enquiry.html">Enquiry</a>
-<a href="contact.html">Contact</a>
-</nav>
+        <!-- Main navigation -->
+        <nav class="main-nav" aria-label="Main navigation">
 
-</header>
+            <a href="index.html">
+                Home
+            </a>
 
+            <a href="about.html">
+                About Us
+            </a>
 
-<main>
+            <a href="products.html" class="active">
+                Products
+            </a>
 
-<h2>Our Floral Arrangements</h2>
+            <a href="enquiry.html">
+                Enquiry
+            </a>
 
+            <a href="contact.html">
+                Contact
+            </a>
 
-<section class="products">
+        </nav>
 
-
-<div class="card">
-
-<img src="images/roses.jpg" alt="Birthday Roses Bouquet">
-
-<h3>Birthday Bouquets</h3>
-
-<p>
-Colourful flower arrangements designed to make birthdays special.
-</p>
-
-</div>
-
+    </header>
 
 
-<div class="card">
+    <!-- ================= MAIN CONTENT ================= -->
+    <main>
 
-<img src="images/wedding.jpg" alt="Wedding Flowers">
+        <!-- Products banner -->
+        <section class="page-banner">
 
-<h3>Wedding Flowers</h3>
+            <h1>Our Flower Products</h1>
 
-<p>
-Elegant floral designs for weddings, including bridal bouquets
-and venue decorations.
-</p>
+            <p>
+                Choose beautiful flowers for every occasion.
+            </p>
 
-</div>
-
-
-
-<div class="card">
-
-<img src="images/sympathy.jpg" alt="Sympathy Flowers">
-
-<h3>Sympathy Flowers</h3>
-
-<p>
-Beautiful arrangements created to express comfort and support.
-</p>
-
-</div>
+        </section>
 
 
+        <!-- Product section -->
+        <section class="section">
 
-<div class="card">
+            <div class="products-grid">
 
-<img src="images/bouquet.jpg" alt="Custom Bouquet">
+                <!-- Birthday flowers -->
+                <article class="product-card">
 
-<h3>Custom Bouquets</h3>
+                    <img
+                        src="images/birthday flowers.webp"
+                        alt="Colourful birthday flower arrangement"
+                        loading="lazy"
+                    >
 
-<p>
-Personalised flower arrangements designed according to customer
-preferences.
-</p>
+                    <div class="product-content">
 
-</div>
+                        <h2>Birthday Bouquets</h2>
+
+                        <p>
+                            Colourful flower arrangements designed to make
+                            birthdays extra special.
+                        </p>
+
+                        <a href="enquiry.html" class="small-button">
+                            Enquire Now
+                        </a>
+
+                    </div>
+
+                </article>
 
 
-</section>
+                <!-- Wedding flowers -->
+                <article class="product-card">
+
+                    <img
+                        src="images/wedding flowers.webp"
+                        alt="Elegant wedding flower arrangement"
+                        loading="lazy"
+                    >
+
+                    <div class="product-content">
+
+                        <h2>Wedding Flowers</h2>
+
+                        <p>
+                            Elegant floral designs for bridal bouquets,
+                            ceremonies and wedding decorations.
+                        </p>
+
+                        <a href="enquiry.html" class="small-button">
+                            Enquire Now
+                        </a>
+
+                    </div>
+
+                </article>
 
 
-</main>
+                <!-- Sympathy flowers -->
+                <article class="product-card">
+
+                    <img
+                        src="images/funeral flowers.webp"
+                        alt="Sympathy flower arrangement"
+                        loading="lazy"
+                    >
+
+                    <div class="product-content">
+
+                        <h2>Sympathy Flowers</h2>
+
+                        <p>
+                            Thoughtful arrangements created to express
+                            comfort, sympathy and support.
+                        </p>
+
+                        <a href="enquiry.html" class="small-button">
+                            Enquire Now
+                        </a>
+
+                    </div>
+
+                </article>
 
 
+                <!-- Custom bouquets -->
+                <article class="product-card">
 
-<footer>
+                    <img
+                        src="images/bouquet flowers.webp"
+                        alt="Custom flower bouquet"
+                        loading="lazy"
+                    >
 
-<p>
-© 2026 Bloom Haven Flowers
-</p>
+                    <div class="product-content">
 
-</footer>
+                        <h2>Custom Bouquets</h2>
 
+                        <p>
+                            Personalised flower arrangements created
+                            according to your preferred flowers and colours.
+                        </p>
+
+                        <a href="enquiry.html" class="small-button">
+                            Enquire Now
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+
+        <p>
+            &copy; 2026 Bloom Haven Flowers. All Rights Reserved.
+        </p>
+
+    </footer>
 
 </body>
 </html>
