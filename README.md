@@ -347,3 +347,4 @@ After validation, the contact information is compiled into a
 - Added a mailto email function for contact submissions.
 
 Added low fidelity wireframes for all website pages
+Added descriptive comments to HTML CSS and JavaScript files
