@@ -160,3 +160,33 @@ https://www.pexels.com/
 
 Unsplash. (2026). Free Image Resources. Available at:
 https://unsplash.com/
+## Version 1.1 – Part 1 Feedback Corrections
+
+### Wireframes
+Added low-fidelity wireframes for all five website pages:
+- Homepage
+- About Us
+- Products
+- Enquiry
+- Contact
+
+The wireframes illustrate the planned page structure, navigation,
+content hierarchy and placement of major website elements.
+
+### Code Comments
+Added descriptive comments to the HTML, CSS and JavaScript files
+to explain the purpose and functionality of the implemented code.
+
+### GitHub Repository
+Reviewed the GitHub repository and corrected the repository access
+and submission link to ensure that the lecturer can access the
+project files.
+
+### Part 2 Preparation
+Updated the external CSS stylesheet to begin implementing:
+- CSS reset
+- Typography
+- Grid layout
+- Hover effects
+- Responsive design
+- Mobile breakpoints
