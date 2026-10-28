@@ -487,3 +487,11 @@ Responsive Design and Styling
 - Added a consistent floral colour palette.
 - Added CSS Grid and Flexbox layouts.
 - Added responsive tablet and mobile breakpoints.
+11. References
+FormSubmit (n.d.) FormSubmit: Easy form endpoints for your HTML forms. Available at: https://formsubmit.co/ (Accessed: 25 October 2026).
+
+Google Search Central (n.d.) SEO Starter Guide. Available at: https://developers.google.com/search/docs/fundamentals/seo-starter-guide (Accessed: 25 October 2026).
+
+OpenStreetMap (n.d.) OpenStreetMap. Available at: https://www.openstreetmap.org/ (Accessed: 25 October 2026).
+
+World Wide Web Consortium (W3C) (n.d.) Web Accessibility Initiative. Available at: https://www.w3.org/WAI/ (Accessed: 25 October 2026).
