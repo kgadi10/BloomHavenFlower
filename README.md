@@ -467,7 +467,11 @@ Added responsive tablet and mobile layouts
 Added responsive product images and visual styling
 Updated README with Part 2 documentation and changelog
 Added an FAQ accordion using HTML details and summary elements.
-
+SEO Improvements
+- Added page-specific title tags.
+- Added unique meta descriptions.
+- Added relevant keyword metadata.
+- Added robots directives to the HTML pages.
 
 
 Added validation for the enquiry form.
