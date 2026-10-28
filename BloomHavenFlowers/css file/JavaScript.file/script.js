@@ -1,329 +1,373 @@
 /* ==========================================================
-   BLOOM HAVEN FLOWERS
-   JavaScript File
-   Part 2 - Form Validation and Interaction
+   BLOOM HAVEN FLOWERS - PART 3 JAVASCRIPT
+   Includes product search, sorting, image lightbox,
+   enquiry form validation and AJAX contact form submission.
    ========================================================== */
 
+document.addEventListener("DOMContentLoaded", () => {
 
-/* ==========================================================
-   1. ENQUIRY FORM
-   ========================================================== */
+    /* ------------------------------------------------------
+       1. PRODUCT SEARCH, FILTER AND SORT
+       ------------------------------------------------------ */
+    const productGrid = document.querySelector(".products-grid");
+    const searchInput = document.getElementById("productSearch");
+    const sortSelect = document.getElementById("productSort");
+    const searchStatus = document.getElementById("productSearchStatus");
 
-const enquiryForm = document.getElementById("enquiryForm");
+    if (productGrid && searchInput && sortSelect) {
+        const cards = Array.from(productGrid.querySelectorAll(".product-card"));
 
+        const filterAndSort = () => {
+            const query = searchInput.value.trim().toLowerCase();
 
-/* Only runs if the enquiry form exists on the page */
-if (enquiryForm) {
+            const visibleCards = cards.filter(card => {
+                const cardText = card.textContent.toLowerCase();
+                const imageAlt = (card.querySelector("img")?.alt || "").toLowerCase();
+                const matches = cardText.includes(query) || imageAlt.includes(query);
 
-    enquiryForm.addEventListener("submit", function (event) {
+                card.hidden = !matches;
+                return matches;
+            });
 
-        /* Prevents the form from submitting before validation */
-        event.preventDefault();
+            visibleCards.sort((a, b) => {
+                const aName = a.querySelector("h2")?.textContent.trim().toLowerCase() || "";
+                const bName = b.querySelector("h2")?.textContent.trim().toLowerCase() || "";
 
+                if (sortSelect.value === "az") {
+                    return aName.localeCompare(bName);
+                }
 
-        /* Gets the customer's information */
-        const name =
-            document.getElementById("enquiryName").value.trim();
+                if (sortSelect.value === "za") {
+                    return bName.localeCompare(aName);
+                }
 
-        const email =
-            document.getElementById("enquiryEmail").value.trim();
+                return cards.indexOf(a) - cards.indexOf(b);
+            });
 
-        const phone =
-            document.getElementById("enquiryPhone").value.trim();
+            visibleCards.forEach(card => productGrid.appendChild(card));
 
-        const flowerType =
-            document.getElementById("flowerType").value;
+            if (searchStatus) {
+                searchStatus.textContent = visibleCards.length
+                    ? `Showing ${visibleCards.length} of ${cards.length} flower products.`
+                    : "No products match your search. Try another word.";
+            }
+        };
 
-        const eventDate =
-            document.getElementById("eventDate").value;
+        searchInput.addEventListener("input", filterAndSort);
+        sortSelect.addEventListener("change", filterAndSort);
+    }
 
-        const message =
-            document.getElementById("enquiryMessage").value.trim();
+    /* ------------------------------------------------------
+       2. PRODUCT IMAGE LIGHTBOX
+       Allows visitors to enlarge product images.
+       ------------------------------------------------------ */
+    const lightbox = document.getElementById("imageLightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const closeLightbox = document.getElementById("closeLightbox");
 
+    if (productGrid && lightbox && lightboxImage) {
+        productGrid.querySelectorAll(".product-card img").forEach(img => {
+            img.tabIndex = 0;
+            img.setAttribute("role", "button");
+            img.setAttribute("aria-label", `Enlarge image: ${img.alt}`);
 
-        /* Gets the error message areas */
-        const nameError =
-            document.getElementById("enquiryNameError");
+            img.addEventListener("click", () => {
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
 
-        const emailError =
-            document.getElementById("enquiryEmailError");
+                if (lightboxCaption) {
+                    lightboxCaption.textContent = img.alt;
+                }
 
-        const phoneError =
-            document.getElementById("enquiryPhoneError");
+                if (typeof lightbox.showModal === "function") {
+                    lightbox.showModal();
+                } else {
+                    lightbox.setAttribute("open", "");
+                }
+            });
 
-        const flowerTypeError =
-            document.getElementById("flowerTypeError");
+            img.addEventListener("keydown", event => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    img.click();
+                }
+            });
+        });
 
-        const eventDateError =
-            document.getElementById("eventDateError");
+        closeLightbox?.addEventListener("click", () => {
+            if (typeof lightbox.close === "function") {
+                lightbox.close();
+            } else {
+                lightbox.removeAttribute("open");
+            }
+        });
 
-        const messageError =
-            document.getElementById("enquiryMessageError");
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) {
+                if (typeof lightbox.close === "function") {
+                    lightbox.close();
+                } else {
+                    lightbox.removeAttribute("open");
+                }
+            }
+        });
+    }
 
-        const response =
-            document.getElementById("enquiryResponse");
+    /* ------------------------------------------------------
+       3. SHARED FORM VALIDATION FUNCTIONS
+       ------------------------------------------------------ */
+    const emailIsValid = value =>
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
+    const phoneIsValid = value =>
+        /^[0-9]{10}$/.test(value);
 
-        /* Clears previous error messages */
-        nameError.textContent = "";
-        emailError.textContent = "";
-        phoneError.textContent = "";
-        flowerTypeError.textContent = "";
-        eventDateError.textContent = "";
-        messageError.textContent = "";
-        response.textContent = "";
+    const showError = (id, message) => {
+        const element = document.getElementById(id);
 
+        if (element) {
+            element.textContent = message;
+        }
+    };
 
-        /* Assumes the form is valid */
-        let valid = true;
+    const clearErrors = ids => {
+        ids.forEach(id => showError(id, ""));
+    };
 
+    /* ------------------------------------------------------
+       4. ENQUIRY FORM VALIDATION AND RESPONSE
+       Shows an illustrative starting estimate based on the
+       selected arrangement. These are not live prices.
+       ------------------------------------------------------ */
+    const enquiryForm = document.getElementById("enquiryForm");
 
-        /* Checks the name */
-        if (name.length < 2) {
+    if (enquiryForm) {
+        const errorIds = [
+            "enquiryNameError",
+            "enquiryEmailError",
+            "enquiryPhoneError",
+            "flowerTypeError",
+            "eventDateError",
+            "enquiryMessageError"
+        ];
 
-            nameError.textContent =
-                "Please enter your full name.";
+        // Prevent selecting a past event date.
+        const eventDateInput = document.getElementById("eventDate");
 
-            valid = false;
+        if (eventDateInput) {
+            const today = new Date();
+            const localToday = new Date(
+                today.getTime() - today.getTimezoneOffset() * 60000
+            ).toISOString().slice(0, 10);
+
+            eventDateInput.min = localToday;
         }
 
+        enquiryForm.addEventListener("submit", event => {
+            event.preventDefault();
+            clearErrors(errorIds);
 
-        /* Checks the email */
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            const name = document.getElementById("enquiryName").value.trim();
+            const email = document.getElementById("enquiryEmail").value.trim();
+            const phone = document.getElementById("enquiryPhone").value.trim();
+            const flowerType = document.getElementById("flowerType").value;
+            const eventDate = document.getElementById("eventDate").value;
+            const message = document.getElementById("enquiryMessage").value.trim();
+            const response = document.getElementById("enquiryResponse");
 
-            emailError.textContent =
-                "Please enter a valid email address.";
+            let valid = true;
 
-            valid = false;
-        }
+            if (name.length < 2) {
+                showError("enquiryNameError", "Please enter your full name (at least 2 characters).");
+                valid = false;
+            }
 
+            if (!emailIsValid(email)) {
+                showError("enquiryEmailError", "Please enter a valid email address.");
+                valid = false;
+            }
 
-        /* Checks the phone number */
-        if (!/^[0-9]{10}$/.test(phone)) {
+            if (!phoneIsValid(phone)) {
+                showError("enquiryPhoneError", "Enter a 10-digit phone number without spaces.");
+                valid = false;
+            }
 
-            phoneError.textContent =
-                "Please enter a 10-digit phone number.";
+            if (!flowerType) {
+                showError("flowerTypeError", "Please select an arrangement.");
+                valid = false;
+            }
 
-            valid = false;
-        }
+            if (!eventDate) {
+                showError("eventDateError", "Please select an event date.");
+                valid = false;
+            } else {
+                const today = new Date();
+                const localToday = new Date(
+                    today.getTime() - today.getTimezoneOffset() * 60000
+                ).toISOString().slice(0, 10);
 
+                if (eventDate < localToday) {
+                    showError("eventDateError", "Please choose today or a future date.");
+                    valid = false;
+                }
+            }
 
-        /* Checks the selected flower arrangement */
-        if (flowerType === "") {
+            if (message.length < 10) {
+                showError("enquiryMessageError", "Please enter at least 10 characters describing your requirements.");
+                valid = false;
+            }
 
-            flowerTypeError.textContent =
-                "Please select a flower arrangement.";
+            if (!valid) {
+                response.textContent = "Please correct the highlighted fields and submit again.";
+                response.className = "form-response form-error";
+                return;
+            }
 
-            valid = false;
-        }
-
-
-        /* Checks the event date */
-        if (eventDate === "") {
-
-            eventDateError.textContent =
-                "Please select an event date.";
-
-            valid = false;
-        }
-
-
-        /* Checks the message */
-        if (message.length < 10) {
-
-            messageError.textContent =
-                "Please provide at least 10 characters.";
-
-            valid = false;
-        }
-
-
-        /* Runs when everything is valid */
-        if (valid) {
+            // Example estimates for a student prototype, not confirmed live prices.
+            const estimates = {
+                "Birthday Bouquets": "Estimated starting price: R350.",
+                "Wedding Flowers": "Estimated starting price: R1,500; final cost depends on the number of arrangements.",
+                "Sympathy Flowers": "Estimated starting price: R450.",
+                "Custom Bouquets": "Estimated starting price: R400."
+            };
 
             response.textContent =
-                "Thank you, " +
-                name +
-                "! Your enquiry for " +
-                flowerType +
-                " has been received. We will contact you about availability and pricing.";
+                `Thank you, ${name}. Your enquiry is valid. ` +
+                `${estimates[flowerType] || "Pricing will be discussed."} ` +
+                `Your requested date is ${eventDate}. These are illustrative estimates only; ` +
+                "availability and final pricing must be confirmed by the florist.";
 
-
-            response.style.backgroundColor = "#d9f2d9";
-
-            response.style.color = "#2f5233";
-
-
-            /* Clears the form after successful submission */
+            response.className = "form-response form-success";
             enquiryForm.reset();
-        }
+        });
+    }
 
-    });
+    /* ------------------------------------------------------
+       5. CONTACT FORM VALIDATION AND AJAX SUBMISSION
+       Replace the sample email below with an email address
+       you control. FormSubmit may require first-time
+       recipient activation before messages can be delivered.
+       ------------------------------------------------------ */
+    const contactForm = document.getElementById("contactForm");
 
-}
+    if (contactForm) {
+        const errorIds = [
+            "contactNameError",
+            "contactEmailError",
+            "contactPhoneError",
+            "messageTypeError",
+            "contactMessageError"
+        ];
 
+        contactForm.addEventListener("submit", async event => {
+            event.preventDefault();
+            clearErrors(errorIds);
 
-/* ==========================================================
-   2. CONTACT FORM
-   ========================================================== */
+            const name = document.getElementById("contactName").value.trim();
+            const email = document.getElementById("contactEmail").value.trim();
+            const phone = document.getElementById("contactPhone").value.trim();
+            const type = document.getElementById("messageType").value;
+            const message = document.getElementById("contactMessage").value.trim();
+            const response = document.getElementById("contactResponse");
 
-const contactForm = document.getElementById("contactForm");
+            let valid = true;
 
+            if (name.length < 2) {
+                showError("contactNameError", "Please enter your full name.");
+                valid = false;
+            }
 
-/* Only runs if the contact form exists */
-if (contactForm) {
+            if (!emailIsValid(email)) {
+                showError("contactEmailError", "Please enter a valid email address.");
+                valid = false;
+            }
 
-    contactForm.addEventListener("submit", function (event) {
+            if (!phoneIsValid(phone)) {
+                showError("contactPhoneError", "Enter a 10-digit phone number without spaces.");
+                valid = false;
+            }
 
-        /* Stops normal form submission */
-        event.preventDefault();
+            if (!type) {
+                showError("messageTypeError", "Please select a message type.");
+                valid = false;
+            }
 
+            if (message.length < 10) {
+                showError("contactMessageError", "Please enter at least 10 characters.");
+                valid = false;
+            }
 
-        /* Gets the customer's information */
-        const name =
-            document.getElementById("contactName").value.trim();
+            if (!valid) {
+                response.textContent = "Please correct the highlighted fields and try again.";
+                response.className = "form-response form-error";
+                return;
+            }
 
-        const email =
-            document.getElementById("contactEmail").value.trim();
+            response.textContent = "Sending your message…";
+            response.className = "form-response";
 
-        const phone =
-            document.getElementById("contactPhone").value.trim();
+            // IMPORTANT: Replace this sample recipient with your real email.
+            const recipientEmail = "info@bloomhavenflowers.co.za";
+            const endpoint = `https://formsubmit.co/ajax/${recipientEmail}`;
 
-        const messageType =
-            document.getElementById("messageType").value;
+            const payload = {
+                name: name,
+                email: email,
+                phone: phone,
+                message_type: type,
+                message: message,
+                _subject: `Bloom Haven Flowers - ${type}`,
+                _template: "table"
+            };
 
-        const message =
-            document.getElementById("contactMessage").value.trim();
+            try {
+                const result = await fetch(endpoint, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
 
+                if (!result.ok) {
+                    throw new Error("The email service returned an error.");
+                }
 
-        /* Gets error message areas */
-        const nameError =
-            document.getElementById("contactNameError");
+                const data = await result.json();
 
-        const emailError =
-            document.getElementById("contactEmailError");
+                if (data.success === "false" || data.success === false) {
+                    throw new Error(data.message || "The email service could not accept the message.");
+                }
 
-        const phoneError =
-            document.getElementById("contactPhoneError");
+                response.textContent =
+                    "Thank you. Your message has been submitted to the email service. " +
+                    "If this is the first submission, the recipient may need to activate the email address.";
 
-        const typeError =
-            document.getElementById("messageTypeError");
+                response.className = "form-response form-success";
+                contactForm.reset();
 
-        const messageError =
-            document.getElementById("contactMessageError");
+            } catch (error) {
+                // Fallback: prepare the message in the visitor's email application.
+                const subject = encodeURIComponent(`Bloom Haven Flowers - ${type}`);
+                const body = encodeURIComponent(
+                    `Name: ${name}\n` +
+                    `Email: ${email}\n` +
+                    `Phone: ${phone}\n` +
+                    `Message type: ${type}\n\n` +
+                    `Message:\n${message}`
+                );
 
-        const response =
-            document.getElementById("contactResponse");
+                response.textContent =
+                    "The online email service could not be reached. " +
+                    "Your email application will open so you can send the message manually.";
 
+                response.className = "form-response form-error";
 
-        /* Clears old errors */
-        nameError.textContent = "";
-        emailError.textContent = "";
-        phoneError.textContent = "";
-        typeError.textContent = "";
-        messageError.textContent = "";
-        response.textContent = "";
-
-
-        /* Assumes the form is valid */
-        let valid = true;
-
-
-        /* Name validation */
-        if (name.length < 2) {
-
-            nameError.textContent =
-                "Please enter your full name.";
-
-            valid = false;
-        }
-
-
-        /* Email validation */
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-
-            emailError.textContent =
-                "Please enter a valid email address.";
-
-            valid = false;
-        }
-
-
-        /* Phone validation */
-        if (!/^[0-9]{10}$/.test(phone)) {
-
-            phoneError.textContent =
-                "Please enter a 10-digit phone number.";
-
-            valid = false;
-        }
-
-
-        /* Message type validation */
-        if (messageType === "") {
-
-            typeError.textContent =
-                "Please select a message type.";
-
-            valid = false;
-        }
-
-
-        /* Message validation */
-        if (message.length < 10) {
-
-            messageError.textContent =
-                "Please enter at least 10 characters.";
-
-            valid = false;
-        }
-
-
-        /* If everything is valid */
-        if (valid) {
-
-            /*
-                Creates the email subject.
-            */
-            const subject = encodeURIComponent(
-                "Bloom Haven Flowers - " + messageType
-            );
-
-
-            /*
-                Creates the email body.
-            */
-            const body = encodeURIComponent(
-                "Name: " + name +
-                "\nEmail: " + email +
-                "\nPhone: " + phone +
-                "\nMessage Type: " + messageType +
-                "\n\nMessage:\n" + message
-            );
-
-
-            /*
-                Opens the customer's email application.
-                The information is automatically added to the email.
-            */
-            window.location.href =
-                "mailto:info@bloomhavenflowers.co.za" +
-                "?subject=" +
-                subject +
-                "&body=" +
-                body;
-
-
-            response.textContent =
-                "Your message has been prepared for email.";
-
-            response.style.backgroundColor =
-                "#d9f2d9";
-
-            response.style.color =
-                "#2f5233";
-        }
-
-    });
-
-}
+                window.location.href =
+                    `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+            }
+        });
+    }
+});

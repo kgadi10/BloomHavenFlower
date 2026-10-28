@@ -1,77 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Character encoding -->
     <meta charset="UTF-8">
-
-    <!-- Responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Page title -->
-    <title>Contact | Bloom Haven Flowers</title>
-
-    <!-- External CSS -->
+    <title>Contact Bloom Haven Flowers | Johannesburg</title>
+    <meta name="description" content="Contact Bloom Haven Flowers for general questions, delivery information, feedback and flower arrangement enquiries.">
+    <meta name="keywords" content="contact florist Johannesburg, Bloom Haven Flowers email, flower delivery contact">
+    <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
-
 <body>
-
-    <!-- ================= HEADER ================= -->
+    <!-- Website header and navigation -->
     <header class="site-header">
-
-        <div class="logo">
-            Bloom Haven Flowers
-        </div>
-
-        <!-- Main navigation -->
+        <a href="index.html" class="logo-link" aria-label="Bloom Haven Flowers Home">
+            <img src="images/logo.webp" alt="Bloom Haven Flowers business logo" class="logo-image">
+        </a>
         <nav class="main-nav" aria-label="Main navigation">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="about.html">
-                About Us
-            </a>
-
-            <a href="products.html">
-                Products
-            </a>
-
-            <a href="enquiry.html">
-                Enquiry
-            </a>
-
-            <a href="contact.html" class="active">
-                Contact
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="products.html">Products</a>
+            <a href="enquiry.html">Enquiry</a>
+            <a href="contact.html" class="active">Contact</a>
         </nav>
-
     </header>
 
-
-    <!-- ================= MAIN CONTENT ================= -->
     <main>
-
-        <!-- Contact banner -->
         <section class="page-banner">
-
-            <h1>Contact Us</h1>
-
-            <p>
-                We would love to hear from you.
-            </p>
-
+            <p class="section-label light-label">Contact Us</p>
+            <h1>We Would Love to Hear From You</h1>
+            <p>Get in touch with Bloom Haven Flowers.</p>
         </section>
 
-
-        <!-- Contact section -->
         <section class="section contact-grid">
-
-            <!-- Contact details -->
+            <!-- Business contact information -->
             <div class="contact-information">
-
+                <p class="section-label light-label">Find Us</p>
                 <h2>Get In Touch</h2>
 
                 <p>
@@ -94,190 +58,69 @@
                     Monday - Saturday: 08:00 - 17:00
                 </p>
 
+                <!-- Sample map location; replace with the actual business location if needed. -->
+                <div class="map-wrapper">
+                    <iframe
+                        title="Sample Johannesburg map"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=28.00%2C-26.25%2C28.10%2C-26.15&layer=mapnik"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <p class="map-note">Sample Johannesburg map. Confirm the actual business location before publishing.</p>
             </div>
 
-
-            <!-- Contact form -->
-            <div>
-
-                <h2>Send Us a Message</h2>
-
+            <!-- General contact form -->
+            <div class="contact-form-wrapper">
+                <p class="section-label">Send A Message</p>
+                <h2>Contact Us</h2>
 
                 <form id="contactForm" novalidate>
-
-                    <!-- Name -->
                     <div class="form-group">
-
-                        <label for="contactName">
-                            Full Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="contactName"
-                            name="name"
-                            minlength="2"
-                            maxlength="50"
-                            required
-                        >
-
-                        <small
-                            class="error-message"
-                            id="contactNameError">
-                        </small>
-
+                        <label for="contactName">Full Name</label>
+                        <input type="text" id="contactName" name="name" minlength="2" maxlength="50" autocomplete="name" required>
+                        <small class="error-message" id="contactNameError"></small>
                     </div>
 
-
-                    <!-- Email -->
                     <div class="form-group">
-
-                        <label for="contactEmail">
-                            Email Address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="contactEmail"
-                            name="email"
-                            required
-                        >
-
-                        <small
-                            class="error-message"
-                            id="contactEmailError">
-                        </small>
-
+                        <label for="contactEmail">Email Address</label>
+                        <input type="email" id="contactEmail" name="email" autocomplete="email" required>
+                        <small class="error-message" id="contactEmailError"></small>
                     </div>
 
-
-                    <!-- Phone -->
                     <div class="form-group">
-
-                        <label for="contactPhone">
-                            Phone Number
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="contactPhone"
-                            name="phone"
-                            pattern="[0-9]{10}"
-                            placeholder="e.g. 0123456789"
-                            required
-                        >
-
-                        <small
-                            class="error-message"
-                            id="contactPhoneError">
-                        </small>
-
+                        <label for="contactPhone">Phone Number</label>
+                        <input type="tel" id="contactPhone" name="phone" pattern="[0-9]{10}" placeholder="e.g. 0123456789" autocomplete="tel" required>
+                        <small class="error-message" id="contactPhoneError"></small>
                     </div>
 
-
-                    <!-- Message type -->
                     <div class="form-group">
-
-                        <label for="messageType">
-                            Type of Message
-                        </label>
-
-                        <select
-                            id="messageType"
-                            name="messageType"
-                            required
-                        >
-
-                            <option value="">
-                                Select message type
-                            </option>
-
-                            <option value="General Enquiry">
-                                General Enquiry
-                            </option>
-
-                            <option value="Product Question">
-                                Product Question
-                            </option>
-
-                            <option value="Delivery Question">
-                                Delivery Question
-                            </option>
-
-                            <option value="Feedback">
-                                Feedback
-                            </option>
-
+                        <label for="messageType">Type of Message</label>
+                        <select id="messageType" name="messageType" required>
+                            <option value="">Select message type</option>
+                            <option value="General Enquiry">General Enquiry</option>
+                            <option value="Product Question">Product Question</option>
+                            <option value="Delivery Question">Delivery Question</option>
+                            <option value="Feedback">Feedback</option>
                         </select>
-
-                        <small
-                            class="error-message"
-                            id="messageTypeError">
-                        </small>
-
+                        <small class="error-message" id="messageTypeError"></small>
                     </div>
 
-
-                    <!-- Message -->
                     <div class="form-group">
-
-                        <label for="contactMessage">
-                            Message
-                        </label>
-
-                        <textarea
-                            id="contactMessage"
-                            name="message"
-                            minlength="10"
-                            maxlength="500"
-                            rows="6"
-                            required
-                        ></textarea>
-
-                        <small
-                            class="error-message"
-                            id="contactMessageError">
-                        </small>
-
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" minlength="10" maxlength="500" rows="6" required></textarea>
+                        <small class="error-message" id="contactMessageError"></small>
                     </div>
 
-
-                    <!-- Submit -->
-                    <button
-                        type="submit"
-                        class="submit-button">
-                        Send Message
-                    </button>
-
-
-                    <!-- Response -->
-                    <div
-                        id="contactResponse"
-                        class="form-response"
-                        aria-live="polite">
-                    </div>
-
+                    <button type="submit" class="submit-button">Send Message</button>
+                    <div id="contactResponse" class="form-response" aria-live="polite"></div>
                 </form>
-
             </div>
-
         </section>
-
     </main>
 
-
-    <!-- ================= FOOTER ================= -->
     <footer class="site-footer">
-
-        <p>
-            &copy; 2026 Bloom Haven Flowers. All Rights Reserved.
-        </p>
-
+        <p>&copy; 2026 Bloom Haven Flowers. All Rights Reserved.</p>
     </footer>
-
-
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
-
 </body>
 </html>

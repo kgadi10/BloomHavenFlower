@@ -1,276 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Character encoding -->
     <meta charset="UTF-8">
-
-    <!-- Responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Page title -->
-    <title>Enquiry | Bloom Haven Flowers</title>
-
-    <!-- External CSS -->
+    <title>Flower Enquiry | Bloom Haven Flowers</title>
+    <meta name="description" content="Request information about flower arrangements, event dates and estimated prices from Bloom Haven Flowers.">
+    <meta name="keywords" content="flower enquiry, flower prices, wedding flower quote, bouquet enquiry">
+    <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
-
 <body>
-
-    <!-- ================= HEADER ================= -->
+    <!-- Website header and navigation -->
     <header class="site-header">
-
-        <div class="logo">
-            Bloom Haven Flowers
-        </div>
-
-        <!-- Main navigation -->
+        <a href="index.html" class="logo-link" aria-label="Bloom Haven Flowers Home">
+            <img src="images/logo.webp" alt="Bloom Haven Flowers business logo" class="logo-image">
+        </a>
         <nav class="main-nav" aria-label="Main navigation">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="about.html">
-                About Us
-            </a>
-
-            <a href="products.html">
-                Products
-            </a>
-
-            <a href="enquiry.html" class="active">
-                Enquiry
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="products.html">Products</a>
+            <a href="enquiry.html" class="active">Enquiry</a>
+            <a href="contact.html">Contact</a>
         </nav>
-
     </header>
 
-
-    <!-- ================= MAIN CONTENT ================= -->
     <main>
-
-        <!-- Page banner -->
         <section class="page-banner">
-
+            <p class="section-label light-label">Get Started</p>
             <h1>Flower Enquiry</h1>
-
-            <p>
-                Tell us what flowers you are looking for.
-            </p>
-
+            <p>Tell us what flowers you are looking for.</p>
         </section>
 
-
-        <!-- Enquiry form -->
         <section class="section form-section">
-
+            <p class="section-label">Your Request</p>
             <h2>Send Us an Enquiry</h2>
-
-            <p>
-                Complete the form below and we will review your request.
-            </p>
-
+            <p>Complete the form below and we will review your request.</p>
 
             <form id="enquiryForm" novalidate>
-
-                <!-- Full name -->
                 <div class="form-group">
-
-                    <label for="enquiryName">
-                        Full Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="enquiryName"
-                        name="name"
-                        minlength="2"
-                        maxlength="50"
-                        required
-                    >
-
-                    <small
-                        class="error-message"
-                        id="enquiryNameError">
-                    </small>
-
+                    <label for="enquiryName">Full Name</label>
+                    <input type="text" id="enquiryName" name="name" minlength="2" maxlength="50" autocomplete="name" required>
+                    <small class="error-message" id="enquiryNameError"></small>
                 </div>
 
-
-                <!-- Email -->
                 <div class="form-group">
-
-                    <label for="enquiryEmail">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="enquiryEmail"
-                        name="email"
-                        required
-                    >
-
-                    <small
-                        class="error-message"
-                        id="enquiryEmailError">
-                    </small>
-
+                    <label for="enquiryEmail">Email Address</label>
+                    <input type="email" id="enquiryEmail" name="email" autocomplete="email" required>
+                    <small class="error-message" id="enquiryEmailError"></small>
                 </div>
 
-
-                <!-- Phone -->
                 <div class="form-group">
-
-                    <label for="enquiryPhone">
-                        Phone Number
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="enquiryPhone"
-                        name="phone"
-                        pattern="[0-9]{10}"
-                        placeholder="e.g. 0123456789"
-                        required
-                    >
-
-                    <small
-                        class="error-message"
-                        id="enquiryPhoneError">
-                    </small>
-
+                    <label for="enquiryPhone">Phone Number</label>
+                    <input type="tel" id="enquiryPhone" name="phone" pattern="[0-9]{10}" placeholder="e.g. 0123456789" autocomplete="tel" required>
+                    <small class="error-message" id="enquiryPhoneError"></small>
                 </div>
 
-
-                <!-- Flower type -->
                 <div class="form-group">
-
-                    <label for="flowerType">
-                        Flower Arrangement
-                    </label>
-
-                    <select
-                        id="flowerType"
-                        name="flowerType"
-                        required
-                    >
-
-                        <option value="">
-                            Select an arrangement
-                        </option>
-
-                        <option value="Birthday Bouquets">
-                            Birthday Bouquets
-                        </option>
-
-                        <option value="Wedding Flowers">
-                            Wedding Flowers
-                        </option>
-
-                        <option value="Sympathy Flowers">
-                            Sympathy Flowers
-                        </option>
-
-                        <option value="Custom Bouquets">
-                            Custom Bouquets
-                        </option>
-
+                    <label for="flowerType">Flower Arrangement</label>
+                    <select id="flowerType" name="flowerType" required>
+                        <option value="">Select an arrangement</option>
+                        <option value="Birthday Bouquets">Birthday Bouquets</option>
+                        <option value="Wedding Flowers">Wedding Flowers</option>
+                        <option value="Sympathy Flowers">Sympathy Flowers</option>
+                        <option value="Custom Bouquets">Custom Bouquets</option>
                     </select>
-
-                    <small
-                        class="error-message"
-                        id="flowerTypeError">
-                    </small>
-
+                    <small class="error-message" id="flowerTypeError"></small>
                 </div>
 
-
-                <!-- Event date -->
                 <div class="form-group">
-
-                    <label for="eventDate">
-                        Event Date
-                    </label>
-
-                    <input
-                        type="date"
-                        id="eventDate"
-                        name="eventDate"
-                        required
-                    >
-
-                    <small
-                        class="error-message"
-                        id="eventDateError">
-                    </small>
-
+                    <label for="eventDate">Event Date</label>
+                    <input type="date" id="eventDate" name="eventDate" required>
+                    <small class="error-message" id="eventDateError"></small>
                 </div>
 
-
-                <!-- Requirements -->
                 <div class="form-group">
-
-                    <label for="enquiryMessage">
-                        Tell us about your requirements
-                    </label>
-
-                    <textarea
-                        id="enquiryMessage"
-                        name="message"
-                        minlength="10"
-                        maxlength="500"
-                        rows="6"
-                        required
-                    ></textarea>
-
-                    <small
-                        class="error-message"
-                        id="enquiryMessageError">
-                    </small>
-
+                    <label for="enquiryMessage">Tell us about your requirements</label>
+                    <textarea id="enquiryMessage" name="message" minlength="10" maxlength="500" rows="6" required></textarea>
+                    <small class="error-message" id="enquiryMessageError"></small>
                 </div>
 
-
-                <!-- Submit button -->
-                <button
-                    type="submit"
-                    class="submit-button">
-                    Submit Enquiry
-                </button>
-
-
-                <!-- JavaScript response -->
-                <div
-                    id="enquiryResponse"
-                    class="form-response"
-                    aria-live="polite">
-                </div>
-
+                <button type="submit" class="submit-button">Submit Enquiry</button>
+                <div id="enquiryResponse" class="form-response" aria-live="polite"></div>
             </form>
-
         </section>
-
     </main>
 
-
-    <!-- ================= FOOTER ================= -->
     <footer class="site-footer">
-
-        <p>
-            &copy; 2026 Bloom Haven Flowers. All Rights Reserved.
-        </p>
-
+        <p>&copy; 2026 Bloom Haven Flowers. All Rights Reserved.</p>
     </footer>
-
-
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
-
 </body>
 </html>

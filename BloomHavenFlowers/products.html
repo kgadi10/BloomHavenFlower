@@ -1,198 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Character encoding -->
     <meta charset="UTF-8">
-
-    <!-- Responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Page title -->
-    <title>Products | Bloom Haven Flowers</title>
-
-    <!-- External CSS -->
+    <title>Flower Products and Bouquets | Bloom Haven Flowers</title>
+    <meta name="description" content="Browse birthday bouquets, wedding flowers, sympathy arrangements and custom bouquets from Bloom Haven Flowers.">
+    <meta name="keywords" content="birthday bouquets, wedding flowers, sympathy flowers, custom bouquets, florist Johannesburg">
+    <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
-
 <body>
-
-    <!-- ================= HEADER ================= -->
+    <!-- Website header and navigation -->
     <header class="site-header">
-
-        <div class="logo">
-            Bloom Haven Flowers
-        </div>
-
-        <!-- Main navigation -->
+        <a href="index.html" class="logo-link" aria-label="Bloom Haven Flowers Home">
+            <img src="images/logo.webp" alt="Bloom Haven Flowers business logo" class="logo-image">
+        </a>
         <nav class="main-nav" aria-label="Main navigation">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="about.html">
-                About Us
-            </a>
-
-            <a href="products.html" class="active">
-                Products
-            </a>
-
-            <a href="enquiry.html">
-                Enquiry
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="products.html" class="active">Products</a>
+            <a href="enquiry.html">Enquiry</a>
+            <a href="contact.html">Contact</a>
         </nav>
-
     </header>
 
-
-    <!-- ================= MAIN CONTENT ================= -->
     <main>
-
-        <!-- Products banner -->
         <section class="page-banner">
-
+            <p class="section-label light-label">Our Collection</p>
             <h1>Our Flower Products</h1>
-
-            <p>
-                Choose beautiful flowers for every occasion.
-            </p>
-
+            <p>Choose beautiful flowers for every occasion.</p>
         </section>
 
-
-        <!-- Product section -->
         <section class="section">
+            <!-- Search and sort controls -->
+            <div class="product-tools" aria-label="Search and sort flower products">
+                <label for="productSearch">Search products</label>
+                <input type="search" id="productSearch" placeholder="Try birthday, wedding or custom..." aria-label="Search flower products">
 
-            <div class="products-grid">
-
-                <!-- Birthday flowers -->
-                <article class="product-card">
-
-                    <img
-                        src="images/birthday flowers.webp"
-                        alt="Colourful birthday flower arrangement"
-                        loading="lazy"
-                    >
-
-                    <div class="product-content">
-
-                        <h2>Birthday Bouquets</h2>
-
-                        <p>
-                            Colourful flower arrangements designed to make
-                            birthdays extra special.
-                        </p>
-
-                        <a href="enquiry.html" class="small-button">
-                            Enquire Now
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- Wedding flowers -->
-                <article class="product-card">
-
-                    <img
-                        src="images/wedding flowers.webp"
-                        alt="Elegant wedding flower arrangement"
-                        loading="lazy"
-                    >
-
-                    <div class="product-content">
-
-                        <h2>Wedding Flowers</h2>
-
-                        <p>
-                            Elegant floral designs for bridal bouquets,
-                            ceremonies and wedding decorations.
-                        </p>
-
-                        <a href="enquiry.html" class="small-button">
-                            Enquire Now
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- Sympathy flowers -->
-                <article class="product-card">
-
-                    <img
-                        src="images/funeral flowers.webp"
-                        alt="Sympathy flower arrangement"
-                        loading="lazy"
-                    >
-
-                    <div class="product-content">
-
-                        <h2>Sympathy Flowers</h2>
-
-                        <p>
-                            Thoughtful arrangements created to express
-                            comfort, sympathy and support.
-                        </p>
-
-                        <a href="enquiry.html" class="small-button">
-                            Enquire Now
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- Custom bouquets -->
-                <article class="product-card">
-
-                    <img
-                        src="images/bouquet flowers.webp"
-                        alt="Custom flower bouquet"
-                        loading="lazy"
-                    >
-
-                    <div class="product-content">
-
-                        <h2>Custom Bouquets</h2>
-
-                        <p>
-                            Personalised flower arrangements created
-                            according to your preferred flowers and colours.
-                        </p>
-
-                        <a href="enquiry.html" class="small-button">
-                            Enquire Now
-                        </a>
-
-                    </div>
-
-                </article>
-
+                <label for="productSort">Sort products</label>
+                <select id="productSort">
+                    <option value="default">Featured order</option>
+                    <option value="az">Name: A to Z</option>
+                    <option value="za">Name: Z to A</option>
+                </select>
+                <p id="productSearchStatus" class="search-status" aria-live="polite">Showing all flower products.</p>
             </div>
 
+            <div class="products-grid">
+                <article class="product-card">
+                    <img src="images/birthday flowers.webp" alt="Colourful birthday flower arrangement" loading="lazy">
+                    <div class="product-content">
+                        <p class="card-label">Celebrations</p>
+                        <h2>Birthday Bouquets</h2>
+                        <p>Colourful flower arrangements designed to make birthdays extra special.</p>
+                        <a href="enquiry.html" class="small-button">Enquire Now</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="images/wedding flowers.webp" alt="Elegant wedding flower arrangement" loading="lazy">
+                    <div class="product-content">
+                        <p class="card-label">Weddings</p>
+                        <h2>Wedding Flowers</h2>
+                        <p>Elegant floral designs for bridal bouquets, ceremonies and wedding decorations.</p>
+                        <a href="enquiry.html" class="small-button">Enquire Now</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="images/funeral flowers.webp" alt="Sympathy flower arrangement" loading="lazy">
+                    <div class="product-content">
+                        <p class="card-label">Sympathy</p>
+                        <h2>Sympathy Flowers</h2>
+                        <p>Thoughtful arrangements created to express comfort, sympathy and support.</p>
+                        <a href="enquiry.html" class="small-button">Enquire Now</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="images/bouquet flowers.webp" alt="Custom flower bouquet" loading="lazy">
+                    <div class="product-content">
+                        <p class="card-label">Personalised</p>
+                        <h2>Custom Bouquets</h2>
+                        <p>Personalised flower arrangements created according to your preferred flowers and colours.</p>
+                        <a href="enquiry.html" class="small-button">Enquire Now</a>
+                    </div>
+                </article>
+            </div>
         </section>
 
+        <!-- Frequently asked questions accordion -->
+        <section class="section soft-section" id="product-faq">
+            <p class="section-label">Helpful Information</p>
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Can I request a custom bouquet?</summary>
+                    <p>Yes. Use the enquiry form to tell us your preferred flowers, colours and occasion.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How early should I order wedding flowers?</summary>
+                    <p>Contact us as early as possible so the date, design and flower availability can be discussed.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I ask about delivery?</summary>
+                    <p>Yes. Select the relevant option on the enquiry form and include your event or delivery details.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Enlarged product image lightbox -->
+        <dialog id="imageLightbox" class="image-lightbox" aria-label="Expanded product image">
+            <button type="button" id="closeLightbox" class="lightbox-close" aria-label="Close enlarged image">×</button>
+            <img id="lightboxImage" src="" alt="">
+            <p id="lightboxCaption"></p>
+        </dialog>
     </main>
 
-
-    <!-- ================= FOOTER ================= -->
     <footer class="site-footer">
-
-        <p>
-            &copy; 2026 Bloom Haven Flowers. All Rights Reserved.
-        </p>
-
+        <p>&copy; 2026 Bloom Haven Flowers. All Rights Reserved.</p>
     </footer>
-
 </body>
 </html>

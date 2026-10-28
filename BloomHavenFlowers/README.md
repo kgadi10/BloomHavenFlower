@@ -300,3 +300,115 @@ After validation, the contact information is compiled into a
 - Changed multi-column layouts to single-column layouts on mobile.
 - Added responsive product images.
 - Improved the overall visual consistency of all five pages.
+# Bloom Haven Flowers
+
+## 1. Project Overview
+
+Bloom Haven Flowers is a responsive, multi-page florist website created as part of a web development portfolio of evidence. The website introduces the business, displays flower products and provides enquiry and contact forms.
+
+The website uses HTML5, CSS3 and JavaScript. It is designed to work on desktop, tablet and mobile screen sizes.
+
+## 2. Website Pages
+
+- `index.html` — Home page introducing the business and its services.
+- `about.html` — Business story, mission, vision and values.
+- `products.html` — Flower product cards, search, sorting, image lightbox and FAQ accordion.
+- `enquiry.html` — Enquiry form with validation and illustrative price estimates.
+- `contact.html` — Contact information, map embed and general contact form.
+
+## 3. Technologies Used
+
+- HTML5 for website structure and forms.
+- CSS3 for colours, layouts, transitions, hover effects and responsive design.
+- JavaScript for product filtering, sorting, image enlargement and form validation.
+- Git and GitHub for version control.
+- Netlify for static website hosting.
+- FormSubmit AJAX endpoint for attempted contact form submission.
+- OpenStreetMap for the sample map embed.
+
+## 4. Part 3 JavaScript Enhancements
+
+### Product Search and Sorting
+
+The Products page includes a search field that filters flower products as a visitor types. Visitors can also sort the product cards alphabetically from A to Z or Z to A. A status message shows how many products match the search.
+
+### Image Gallery and Lightbox
+
+Selecting a product image opens a larger version in a lightbox. The image includes alternative text, and visitors can close the lightbox using its close control. Keyboard users can focus an image and open it using Enter or Space.
+
+### FAQ Accordion
+
+The Products page contains a Frequently Asked Questions section. Visitors can expand and collapse answers using the built-in HTML details and summary elements.
+
+### Enquiry Form
+
+The enquiry form collects a name, email address, phone number, flower arrangement, event date and a description of the request. JavaScript validates the information and displays an arrangement-specific illustrative starting estimate after valid submission.
+
+These estimates are examples for the prototype, not verified business prices or confirmation of flower availability.
+
+### Contact Form
+
+The contact form collects a name, email address, phone number, message type and full message. JavaScript validates the fields before attempting asynchronous submission using the FormSubmit AJAX endpoint.
+
+If the online service cannot be reached, the website attempts to open a pre-filled email in the visitor's default email application.
+
+The recipient email address must be replaced with an email address controlled by the website owner. The online submission must be tested before claiming that email delivery works.
+
+### Interactive Map
+
+The Contact page includes an embedded OpenStreetMap map. The current map displays a sample Johannesburg area. The location must be updated if the actual business is located elsewhere.
+
+## 5. Search Engine Optimisation (SEO)
+
+The website includes the following SEO practices:
+
+- Unique page titles.
+- Meta descriptions for each page.
+- Relevant keyword metadata.
+- Clear heading hierarchy.
+- Descriptive image alternative text.
+- Internal links between website pages.
+- Responsive layouts for different screen sizes.
+- `robots.txt` to provide crawling instructions.
+- `sitemap.xml` listing the main website pages.
+
+The placeholder domain in `robots.txt` and `sitemap.xml` must be replaced with the actual Netlify domain before publication.
+
+Image files should be compressed appropriately to improve loading performance.
+
+## 6. Accessibility and Usability
+
+The website includes:
+
+- Labels associated with form fields.
+- Alternative text for images.
+- Keyboard focus styles.
+- Helpful validation messages.
+- Live status messages for form responses and product searches.
+- Responsive layouts.
+- Interactive controls with accessible names.
+
+The site should still be tested with keyboard navigation and different screen sizes before final submission.
+
+## 7. Folder Structure
+
+```text
+BloomHavenFlowers/
+├── index.html
+├── about.html
+├── products.html
+├── enquiry.html
+├── contact.html
+├── README.md
+├── robots.txt
+├── sitemap.xml
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+└── images/
+    ├── logo.webp
+    ├── birthday flowers.webp
+    ├── bouquet flowers.webp
+    ├── funeral flowers.webp
+    └── wedding flowers.webp
