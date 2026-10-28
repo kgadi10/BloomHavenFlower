@@ -483,3 +483,7 @@ Added sitemap.xml.
 
 Reviewed page headings, internal links and image alternative text.
 Added validation for the enquiry form.
+Responsive Design and Styling
+- Added a consistent floral colour palette.
+- Added CSS Grid and Flexbox layouts.
+- Added responsive tablet and mobile breakpoints.
