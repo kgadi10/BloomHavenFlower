@@ -473,5 +473,13 @@ SEO Improvements
 - Added relevant keyword metadata.
 - Added robots directives to the HTML pages.
 
+Added robots.txt.
 
+
+
+Added sitemap.xml.
+
+
+
+Reviewed page headings, internal links and image alternative text.
 Added validation for the enquiry form.
