@@ -466,3 +466,8 @@ Implemented desktop layout using CSS Grid and Flexbox
 Added responsive tablet and mobile layouts
 Added responsive product images and visual styling
 Updated README with Part 2 documentation and changelog
+Added an FAQ accordion using HTML details and summary elements.
+
+
+
+Added validation for the enquiry form.
